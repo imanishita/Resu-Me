@@ -1,0 +1,166 @@
+/* resume.css */
+.resume-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Header Section */
+.header-section {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.contact-line {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.address {
+  font-size: 14px;
+}
+
+/* Section Styling */
+.section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 3px;
+}
+
+/* Education */
+.education-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.education-item {
+  margin-bottom: 15px;
+}
+
+.institution-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.degree-info {
+  font-size: 14px;
+}
+
+/* Projects */
+.project-item {
+  margin-bottom: 15px;
+}
+
+.project-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.project-tools {
+  font-size: 13px;
+  font-style: italic;
+  margin: 5px 0;
+}
+
+.project-description {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.project-description li {
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+/* Certifications */
+.certification-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.certification-item {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Skills */
+.skills-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-item {
+  font-size: 14px;
+  background-color: #f0f0f0;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+/* Buttons */
+.button-container {
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+
+.home-button {
+  padding: 8px 16px;
+  background-color: #581c1c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.download-button-container {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.download-button {
+  padding: 12px 24px;
+  background-color:#581c1c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Print Settings */
+@media print {
+  .resume-container {
+    padding: 0;
+    max-width: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .button-container, .download-button-container {
+    display: none;
+  }
+}

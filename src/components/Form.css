@@ -1,0 +1,127 @@
+.form-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(94, 38, 38, 0.722);
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #581c1c;
+    box-shadow: 0 0 5px rgba(123, 80, 80, 0.5);
+}
+
+textarea.form-input {
+    min-height: 100px;
+    resize: vertical;
+}
+
+h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 2px solid #581c1c;
+    padding-bottom: 5px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+    font-weight: 500;
+}
+
+.add-button,
+.submit-button {
+    padding: 12px 24px;
+    background-color: #581c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover,
+.submit-button:hover {
+    background-color: #581c1c;
+}
+
+.delete-button {
+    padding: 8px 16px;
+    background-color: #581c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #581c1c;
+}
+
+.nested-form-group {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border-left: 4px solid #581c1c;
+}
+
+.bullet-group {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.bullet-input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+    }
+    
+    .form-input {
+        padding: 12px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    h3 {
+        font-size: 16px;
+    }
+}
