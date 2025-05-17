@@ -13,7 +13,7 @@ const Resume = ({ resumeData = {} }) => {
         contact: {
             phone: resumeData.contact?.phone || '(123) 456-7890',
             email: resumeData.contact?.email || 'your.email@example.com',
-            social: resumeData.contact?.social || '@yourprofile',
+            social: resumeData.contact?.website || 'abc.com',
             address: resumeData.contact?.address || 'City, Country'
         },
         education: Array.isArray(resumeData.education) ? resumeData.education : [{
