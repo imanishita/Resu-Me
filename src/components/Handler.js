@@ -52,7 +52,7 @@ const useFormHandlers = () => {
     const handleArrayChange = (e, index, field) => {
         const newValue = e.target.value;
         setFormData(prev => {
-            const newArray = [...prev[field]];
+            const newArray = [...(prev[field] || [])];
             newArray[index] = newValue;
             return { ...prev, [field]: newArray };
         });
@@ -61,15 +61,15 @@ const useFormHandlers = () => {
     const handleNestedArrayChange = (e, index, field, parentField, subField = null) => {
         const newValue = e.target.value;
         setFormData(prev => {
-            const newArray = [...prev[parentField]];
+            const newArray = [...(prev[parentField] || [])];
             if (subField) {
                 newArray[index] = {
-                    ...newArray[index],
+                    ...(newArray[index] || {}),
                     [subField]: newValue
                 };
             } else {
                 newArray[index] = {
-                    ...newArray[index],
+                    ...(newArray[index] || {}),
                     [field]: newValue
                 };
             }
@@ -80,10 +80,13 @@ const useFormHandlers = () => {
     const handleBulletChange = (e, parentIndex, bulletIndex, parentField) => {
         const newValue = e.target.value;
         setFormData(prev => {
-            const newArray = [...prev[parentField]];
+            const newArray = [...(prev[parentField] || [])];
+            const currentItem = newArray[parentIndex] || { bullets: [''] };
+            const currentBullets = Array.isArray(currentItem.bullets) ? currentItem.bullets : [''];
+            
             newArray[parentIndex] = {
-                ...newArray[parentIndex],
-                bullets: newArray[parentIndex].bullets.map((bullet, idx) => 
+                ...currentItem,
+                bullets: currentBullets.map((bullet, idx) => 
                     idx === bulletIndex ? newValue : bullet
                 )
             };
@@ -93,10 +96,13 @@ const useFormHandlers = () => {
 
     const handleAddBullet = (parentIndex, parentField) => {
         setFormData(prev => {
-            const newArray = [...prev[parentField]];
+            const newArray = [...(prev[parentField] || [])];
+            const currentItem = newArray[parentIndex] || { bullets: [''] };
+            const currentBullets = Array.isArray(currentItem.bullets) ? currentItem.bullets : [''];
+            
             newArray[parentIndex] = {
-                ...newArray[parentIndex],
-                bullets: [...newArray[parentIndex].bullets, '']
+                ...currentItem,
+                bullets: [...currentBullets, '']
             };
             return { ...prev, [parentField]: newArray };
         });
@@ -105,54 +111,59 @@ const useFormHandlers = () => {
     const handleDelete = (index, parentField, subField = null, subIndex = null) => {
         setFormData(prev => {
             if (subField && subIndex !== null) {
-                // Delete bullet point
-                const newArray = [...prev[parentField]];
+                const newArray = [...(prev[parentField] || [])];
+                const currentItem = newArray[index] || { [subField]: [] };
                 newArray[index] = {
-                    ...newArray[index],
-                    [subField]: newArray[index][subField].filter((_, i) => i !== subIndex)
+                    ...currentItem,
+                    [subField]: (currentItem[subField] || []).filter((_, i) => i !== subIndex)
                 };
                 return { ...prev, [parentField]: newArray };
             } else {
-                // Delete entire item
-                const newArray = prev[parentField].filter((_, i) => i !== index);
+                const newArray = (prev[parentField] || []).filter((_, i) => i !== index);
                 return { ...prev, [parentField]: newArray };
             }
         });
     };
 
-    // Add functions
     const addSkill = () => {
         setFormData(prev => ({
             ...prev,
-            skills: [...prev.skills, '']
+            skills: [...(prev.skills || []), '']
         }));
     };
 
     const addEducation = () => {
         setFormData(prev => ({
             ...prev,
-            education: [...prev.education, { institution: '', degree: '' }]
+            education: [...(prev.education || []), { 
+                institution: '', 
+                degree: '', 
+                gpa: '' 
+            }]
         }));
     };
 
     const addProject = () => {
         setFormData(prev => ({
             ...prev,
-            projects: [...prev.projects, { title: '', tools: '', bullets: [''] }]
+            projects: [...(prev.projects || []), { 
+                title: '', 
+                tools: '', 
+                bullets: [''] 
+            }]
         }));
     };
 
     const addCertificate = () => {
         setFormData(prev => ({
             ...prev,
-            certificates: [...prev.certificates, '']
+            certificates: [...(prev.certificates || []), '']
         }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted', formData);
-        // Here you would typically send the data to an API
     };
 
     return {

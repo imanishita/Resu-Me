@@ -9,7 +9,8 @@ import Home from './components/Home';
 import useFormHandlers from './components/Handler';
 import useFormHandlers2 from './components/Handler2';
 import ATSChecker from './components/ATSChecker';
-import AnimatedBG from './components/AnimatedBG'; // ✅ Added import
+import AnimatedBG from './components/AnimatedBG'; 
+import Footer from './components/Footer';
 import './App.css';
 
 const App = () => {
@@ -67,7 +68,7 @@ const App = () => {
     return (
         <Router>
             <div className="app-container">
-                <AnimatedBG /> {/* ✅ Add particles in the background */}
+                <AnimatedBG />
                 <div className="main-content">
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -126,6 +127,8 @@ const App = () => {
                         } />
                     </Routes>
                 </div>
+
+                <Footer /> {/* ✅ Persistent footer across pages */}
             </div>
         </Router>
     );

@@ -1,12 +1,34 @@
-// resume.js
 import React, { useRef } from 'react';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Link } from 'react-router-dom';
 import './Resume.css';
 
-const Resume = ({ resumeData }) => {
+const Resume = ({ resumeData = {} }) => {
     const resumeRef = useRef();
+
+    // Safely structure the resume data with defaults
+    const data = {
+        name: resumeData.name || 'Your Name',
+        contact: {
+            phone: resumeData.contact?.phone || '(123) 456-7890',
+            email: resumeData.contact?.email || 'your.email@example.com',
+            social: resumeData.contact?.social || '@yourprofile',
+            address: resumeData.contact?.address || 'City, Country'
+        },
+        education: Array.isArray(resumeData.education) ? resumeData.education : [{
+            institution: 'Your University',
+            degree: 'Your Degree',
+            gpa: 'X.X GPA'
+        }],
+        projects: Array.isArray(resumeData.projects) ? resumeData.projects : [{
+            title: 'Project Name',
+            tools: 'Tools Used',
+            bullets: ['Project description point 1', 'Project description point 2']
+        }],
+        certificates: Array.isArray(resumeData.certificates) ? resumeData.certificates : ['Certificate 1'],
+        skills: Array.isArray(resumeData.skills) ? resumeData.skills : ['Skill 1', 'Skill 2']
+    };
 
     const handleDownload = () => {
         const input = resumeRef.current;
@@ -21,7 +43,7 @@ const Resume = ({ resumeData }) => {
     };
 
     return (
-        <div>
+        <div className="resume-page">
             <div className="button-container">
                 <Link to="/">
                     <button className="home-button">
@@ -29,37 +51,40 @@ const Resume = ({ resumeData }) => {
                     </button>
                 </Link>
             </div>
+
             <div id="resume" className="resume-container" ref={resumeRef}>
+                {/* Header Section */}
                 <div className="header-section">
-                    <h1 className="name">{resumeData.name || 'FULL NAME'}</h1>
+                    <h1 className="name">{data.name}</h1>
                     <div className="contact-line">
-                        {resumeData.contact?.phone} | {resumeData.contact?.email} | {resumeData.contact?.social}
+                        {data.contact.phone} | {data.contact.email} | {data.contact.social}
                     </div>
-                    <div className="address">
-                        {resumeData.contact?.address}
-                    </div>
+                    <div className="address">{data.contact.address}</div>
                 </div>
 
+                {/* Education Section */}
                 <div className="section">
                     <h2 className="section-title">EDUCATION</h2>
                     <ul className="education-list">
-                        {resumeData.education?.map((edu, index) => (
+                        {data.education.map((edu, index) => (
                             <li key={index} className="education-item">
                                 <div className="institution-name">{edu.institution}</div>
                                 <div className="degree-info">{edu.degree}</div>
+                                {edu.gpa && <div className="gpa">{edu.gpa}</div>}
                             </li>
                         ))}
                     </ul>
                 </div>
 
+                {/* Projects Section */}
                 <div className="section">
                     <h2 className="section-title">PROJECTS</h2>
-                    {resumeData.projects?.map((project, index) => (
+                    {data.projects.map((project, index) => (
                         <div key={index} className="project-item">
                             <div className="project-name">{project.title}</div>
                             <div className="project-tools">{project.tools}</div>
                             <ul className="project-description">
-                                {project.bullets?.map((bullet, bulletIndex) => (
+                                {project.bullets.map((bullet, bulletIndex) => (
                                     <li key={bulletIndex}>{bullet}</li>
                                 ))}
                             </ul>
@@ -67,25 +92,27 @@ const Resume = ({ resumeData }) => {
                     ))}
                 </div>
 
+                {/* Certifications Section */}
                 <div className="section">
                     <h2 className="section-title">CERTIFICATIONS</h2>
                     <ul className="certification-list">
-                        {resumeData.certificates?.map((cert, index) => (
+                        {data.certificates.map((cert, index) => (
                             <li key={index} className="certification-item">{cert}</li>
                         ))}
                     </ul>
                 </div>
 
+                {/* Skills Section */}
                 <div className="section">
                     <h2 className="section-title">SKILLS</h2>
                     <div className="skills-section">
-                        {resumeData.skills?.map((skill, index) => (
+                        {data.skills.map((skill, index) => (
                             <span key={index} className="skill-item">{skill}</span>
                         ))}
                     </div>
                 </div>
             </div>
-           
+
             <div className="download-button-container">
                 <button className="download-button" onClick={handleDownload}>
                     <i className="fas fa-download"></i> Download Resume
