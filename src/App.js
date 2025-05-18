@@ -22,13 +22,16 @@ const App = () => {
         handleChange: handleChange1,
         handleArrayChange: handleArrayChange1,
         handleNestedArrayChange: handleNestedArrayChange1,
+        handleBulletChange: handleBulletChange1,
         addSkill: addSkill1,
         addEducation: addEducation1,
         addCertificate: addCertificate1,
+        addProject: addProject1,
         addLanguage: addLanguage1,
         handleAddExperience: handleAddExperience1,
         handleDelete: handleDelete1,
         handleSubmit: handleSubmit1,
+        handleAddBullet: handleAddBullet1,
     } = useFormHandlers();
 
     const {
@@ -79,15 +82,16 @@ const App = () => {
                                     <Form
                                         formData={formData1}
                                         handleChange={handleChange1}
+                                        handleNestedArrayChange={handleNestedArrayChange1}
                                         handleArrayChange={handleArrayChange1}
-                                        addSkill={addSkill1}
+                                        handleBulletChange={handleBulletChange1}
+                                        handleAddBullet={handleAddBullet1}
+                                        handleDelete={handleDelete1}
                                         addEducation={addEducation1}
                                         addCertificate={addCertificate1}
-                                        addLanguage={addLanguage1}
-                                        handleAddExperience={handleAddExperience1}
-                                        handleNestedArrayChange={handleNestedArrayChange1}
+                                        addSkill={addSkill1}
+                                        addProject={addProject1} 
                                         handleSubmit={handleSubmit1}
-                                        handleDelete={handleDelete1}
                                     />
                                 </div>
                                 <div className="resume-wrapper">
@@ -128,7 +132,7 @@ const App = () => {
                     </Routes>
                 </div>
 
-                <Footer /> {/* ✅ Persistent footer across pages */}
+                <Footer />
             </div>
         </Router>
     );
