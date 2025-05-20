@@ -44,8 +44,8 @@ const Footer = () => {
         Swal.fire({
           icon: 'success',
           title: 'Message Sent!',
-          text: 'Thanks for contacting me. I’ll get back to you soon.',
-          confirmButtonColor: '#3085d6'
+          text: 'Thanks for contacting me. I will get back to you soon.',
+          confirmButtonColor: '#4a0505'
         });
       } else {
         throw new Error(result.message || 'Failed to send message.');
@@ -55,7 +55,7 @@ const Footer = () => {
         icon: 'error',
         title: 'Oops...',
         text: error.message || 'Something went wrong! Please try again later.',
-        confirmButtonColor: '#d33'
+        confirmButtonColor: '#4a0505'
       });
     } finally {
       setIsSubmitting(false);
@@ -65,14 +65,14 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-
         {/* About Section */}
         <div className="footer-about">
-          <h3>About</h3>
+          <h3>About ResuMe</h3>
           <p>
             Created this platform to help you edit and customize your resume quickly and effortlessly. 
             I'm continuously working to add more templates and features to enhance your experience.
-            <br /><br />
+          </p>
+          <p>
             Stay tuned for exciting updates coming soon!
           </p>
         </div>
@@ -156,11 +156,10 @@ const Footer = () => {
               <FaGlobe />
             </a>
           </div>
-          <p style={{ marginTop: '20px', color: '#bbb', fontSize: '0.9rem' }}>
+          <p className="footer-tagline">
             Let's build something amazing together!
           </p>
         </div>
-
       </div>
 
       {/* Footer Bottom */}

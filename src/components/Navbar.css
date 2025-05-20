@@ -1,0 +1,175 @@
+/* Navbar base */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
+  background-color: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-scrolled {
+  background-color: rgba(3, 0, 20, 0.8);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-open {
+  background-color: #030014;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+/* Container */
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.navbar-logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #545255, #f5f5f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+/* Tagline under logo */
+.tagline {
+    font-size: 0.85rem;
+    color: #bbb;
+    font-weight: 400;
+    margin-top: 4px;
+    user-select: none;
+}
+
+/* Desktop Nav */
+.navbar-desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-desktop {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .navbar-mobile-button {
+    display: none;
+  }
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #e2d3fd;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link.active {
+  background: linear-gradient(90deg, #545255, #f5f5f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.nav-link .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #545255, #f5f5f8);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-link.active .underline,
+.nav-link:hover .underline {
+  transform: scaleX(1);
+}
+
+/* Mobile menu button */
+.navbar-mobile-button button {
+  background: none;
+  border: none;
+  color: #e2d3fd;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+.navbar-mobile-button button:hover {
+  color: #fff;
+}
+
+/* Mobile menu overlay */
+.navbar-mobile-menu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  height: 40vh;
+  background-color: #030014;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+  gap: 1rem;
+  z-index: 998;
+}
+
+.navbar-mobile-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Mobile nav links */
+.mobile-nav-link {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #e2d3fd;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+  color: #fff;
+}
+
+.mobile-nav-link.active {
+  background: linear-gradient(90deg, #545255, #f5f5f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}

@@ -16,7 +16,7 @@
 
 ## 🛠 Tech Stack
 
-- **Frontend**: React, Tailwind CSS / Custom CSS
+- **Frontend**: React, CSS,SweetAlert2 for alert modals and confirmations (install via npm install sweetalert2 and use inside components)
 - **Routing**: React Router
 - **Animations**: AOS (Animate On Scroll) or CSS-based animations
 - **Deployment**: Vercel
@@ -24,6 +24,12 @@
 ---
 ### HomePage 
 ![Home Page](./public/homepage.png)
+
+### Footer
+ ![Footer](./public/footeradded.png)
+
+ ### Optimize Your Resume
+ ![Optimize Your Resume](./public/optimiseyourresume.png.png)
 
 ###  First Template 
 ![First Template](./public/firsttemplate.png)

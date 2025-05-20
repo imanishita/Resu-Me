@@ -11,6 +11,7 @@ import useFormHandlers2 from './components/Handler2';
 import ATSChecker from './components/ATSChecker';
 import AnimatedBG from './components/AnimatedBG'; 
 import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 import './App.css';
 
 const App = () => {
@@ -50,13 +51,8 @@ const App = () => {
     } = useFormHandlers2();
 
     useEffect(() => {
-        const timeout1 = setTimeout(() => {
-            setLoading1(false);
-        }, 2000);
-
-        const timeout2 = setTimeout(() => {
-            setLoading2(false);
-        }, 2000);
+        const timeout1 = setTimeout(() => setLoading1(false), 2000);
+        const timeout2 = setTimeout(() => setLoading2(false), 2000);
 
         return () => {
             clearTimeout(timeout1);
@@ -72,6 +68,7 @@ const App = () => {
         <Router>
             <div className="app-container">
                 <AnimatedBG />
+                <Navbar /> {/* ✅ Navbar added globally */}
                 <div className="main-content">
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -90,7 +87,7 @@ const App = () => {
                                         addEducation={addEducation1}
                                         addCertificate={addCertificate1}
                                         addSkill={addSkill1}
-                                        addProject={addProject1} 
+                                        addProject={addProject1}
                                         handleSubmit={handleSubmit1}
                                     />
                                 </div>
@@ -131,7 +128,6 @@ const App = () => {
                         } />
                     </Routes>
                 </div>
-
                 <Footer />
             </div>
         </Router>

@@ -1,10 +1,11 @@
 .footer {
-  background-color: #1a1a1a;
+  background-color: #121212;
   color: #fff;
   padding: 60px 20px 30px;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   position: relative;
   z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-container {
@@ -31,11 +32,11 @@
   bottom: 0;
   width: 50px;
   height: 2px;
-  background: #4c1616;
+  background: #4a0505;
 }
 
-.footer-about,
-.footer-form,
+.footer-about, 
+.footer-form, 
 .footer-social {
   flex: 1 1 300px;
 }
@@ -43,7 +44,7 @@
 .footer-about p {
   margin-top: 15px;
   line-height: 1.8;
-  color: #ddd;
+  color: #ccc;
   font-size: 1rem;
 }
 
@@ -52,28 +53,30 @@
   flex-direction: column;
 }
 
-.footer-form input,
+.footer-form input, 
 .footer-form textarea {
   margin-bottom: 15px;
   padding: 12px 15px;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
-  background: #2a2a2a;
+  background: #1e1e1e;
   color: #fff;
   resize: vertical;
   transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-form input::placeholder,
+.footer-form input::placeholder, 
 .footer-form textarea::placeholder {
-  color: #bbb;
+  color: #aaa;
 }
 
-.footer-form input:focus,
+.footer-form input:focus, 
 .footer-form textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(76, 22, 22, 0.5);
+  box-shadow: 0 0 0 2px rgba(74, 5, 5, 0.5);
+  border-color: rgba(74, 5, 5, 0.5);
 }
 
 .footer-form textarea {
@@ -81,11 +84,11 @@
 }
 
 .footer-form button {
-  background-color: #4c1616;
+  background-color: #4a0505;
   color: white;
   padding: 12px;
   border: none;
-  border-radius: 4px;
+  border-radius: 30px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
@@ -94,9 +97,32 @@
   letter-spacing: 1px;
 }
 
-.footer-form button:hover {
-  background-color: #5e1b1b;
+.footer-form button:hover:not(:disabled) {
+  background-color: #2e0808;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.footer-form button:disabled {
+  background-color: #3a0404;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Spinner animation for form submission */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .footer-social .social-links {
@@ -109,23 +135,43 @@
   color: #fff;
   transition: all 0.3s ease;
   font-size: 1.5rem;
+  background-color: rgba(74, 5, 5, 0.7);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-social .social-links a:hover {
-  color: #4c1616;
+  background-color: #4a0505;
   transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.footer-tagline {
+  margin-top: 20px;
+  color: #ccc;
+  font-size: 0.95rem;
 }
 
 .footer-bottom {
   text-align: center;
   margin-top: 60px;
   padding-top: 20px;
-  border-top: 1px solid #333;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.9rem;
   color: #aaa;
 }
 
-/* Responsive */
+/* Responsive styles */
+@media (max-width: 992px) {
+  .footer-container {
+    gap: 30px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 40px 20px;
@@ -148,5 +194,15 @@
   
   .footer-social .social-links {
     justify-content: center;
+  }
+  
+  .footer-social h3,
+  .footer-tagline {
+    text-align: center;
+  }
+  
+  .footer-social h3::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

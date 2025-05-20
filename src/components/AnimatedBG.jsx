@@ -1,10 +1,9 @@
 import Particles from "react-tsparticles";
-import { Engine } from "tsparticles-engine";
-import { loadSlim } from "tsparticles-slim"; // or loadFull from "tsparticles"
+import { loadSlim } from "tsparticles-slim"; // use loadFull if you need full features
 
 const AnimatedBG = () => {
-  const particlesInit = async (engine: Engine) => {
-    await loadSlim(engine); // load only the slim engine (or loadFull for full features)
+  const particlesInit = async (engine) => {
+    await loadSlim(engine); // load only the slim engine
   };
 
   return (
