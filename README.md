@@ -29,7 +29,7 @@
  ![Footer](./public/footeradded.png)
 
  ### Optimize Your Resume
- ![Optimize Your Resume](./public/optimiseyourresume.png.png)
+ ![Optimize Your Resume](./public/optimiseyourresume.png)
 
 ###  First Template 
 ![First Template](./public/firsttemplate.png)
