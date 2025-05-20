@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Footer.css';
-import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,19 +19,47 @@ const Footer = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Here you would typically send the form data to your backend
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
+
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('message', formData.message);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/imanishita17@gmail.com', {
+        method: 'POST',
+        body: formDataToSend,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
-      alert('Message sent successfully!');
-    }, 1500);
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setFormData({ name: '', email: '', message: '' });
+        Swal.fire({
+          icon: 'success',
+          title: 'Message Sent!',
+          text: 'Thanks for contacting me. I’ll get back to you soon.',
+          confirmButtonColor: '#3085d6'
+        });
+      } else {
+        throw new Error(result.message || 'Failed to send message.');
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message || 'Something went wrong! Please try again later.',
+        confirmButtonColor: '#d33'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -117,6 +146,14 @@ const Footer = () => {
               aria-label="Email"
             >
               <FaEnvelope />
+            </a>
+            <a
+              href="https://imanishita.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Website"
+            >
+              <FaGlobe />
             </a>
           </div>
           <p style={{ marginTop: '20px', color: '#bbb', fontSize: '0.9rem' }}>
