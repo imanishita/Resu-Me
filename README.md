@@ -6,7 +6,7 @@
 
 ##  Features
 
-- 📄 Build resumes using **two different templates**
+- Build resumes using **two different templates**
 - Real-time preview of the resume
 - dd/edit/remove sections like Skills, Education, Certificates, Languages, and Experience
 - Intelligent **ATS Checker** to analyze keyword matching with job descriptions
