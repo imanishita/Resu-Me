@@ -14,7 +14,7 @@
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Frontend**: React, CSS,SweetAlert2 for alert modals and confirmations (install via npm install sweetalert2 and use inside components)
 - **Routing**: React Router
@@ -41,7 +41,7 @@
 ![ATS Tracker](./public/atschecker.png)
 
 
-## 🔧 Getting Started
+## Getting Started
 
 To run the project locally:
 
